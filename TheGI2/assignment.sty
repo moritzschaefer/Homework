@@ -1,0 +1,46 @@
+\ProvidesPackage{assignment}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\usepackage[sc]{mathpazo}
+\linespread{1.05} % Palatino needs more space between lines
+\usepackage{microtype}
+
+
+
+\usepackage{paralist}
+\usepackage{enumitem}
+\setdescription{style=multiline,font=\normalfont}
+
+\usepackage{titlesec}
+\titleformat{\section}[block]{\bfseries}{\Roman{section}.}{0.4em}{\MakeUppercase}
+\titleformat{\subsection}[block]{}{\Roman{section}.\arabic{subsection}}{0.4em}{\MakeUppercase}
+\titleformat{\subsubsection}[block]{\itshape}{}{0em}{}
+
+
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+
+\newcommand{\assignment}[2]{\title{
+  \vspace{-20mm}
+  \Large\changefont{phv}{b}{n}#1\\[2mm]
+  \normalsize\changefont{phv}{m}{n}#2}}
+
+\newcommand{\members}[2]{\author{
+  \normalsize\changefont{phv}{m}{n}#1\\[-2mm]
+  \small{#2}
+}}
+
+\date{}
+
+
+\newcommand{\eqhat}{\mathop{\hat{=}}}
+\newcommand{\eqdef}[1]{\stackrel{\mathrm{#1}}=}
+\newcommand{\equivdef}[1]{\stackrel{\mathrm{#1}}\equiv}

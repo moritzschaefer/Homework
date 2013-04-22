@@ -1,0 +1,63 @@
+\documentclass[a4paper]{scrartcl}
+% Source: http://www.howtotex.com/templates/two-column-journal-article-template/
+
+% Source: http://www.howtotex.com/templates/two-column-journal-article-template/
+
+% SETTINGS BEGIN
+
+\usepackage{assignment}
+\usepackage[hmarginratio=1:1,top=25mm,left=25mm]{geometry}
+\usepackage{arydshln}
+
+
+\usepackage{wasysym}
+
+\usepackage{ stmaryrd }
+\usepackage{tikz}
+\usetikzlibrary{fit,shapes,arrows}
+
+\newcommand{\impldef}[1]{\stackrel{\mathrm{#1}}\Rightarrow}
+\newcommand{\biimpldef}[1]{\stackrel{\mathrm{#1}}\Leftrightarrow}
+\newcommand{\ldot}{\;.\;}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ps}{\mathcal{P}}
+
+\renewcommand{\labelitemi}{$-$}
+
+
+
+
+\assignment{Hausaufgabe 2}{Theoretische Grundlagen der Informatik 2 SS 2013\\TU Berlin}
+\members{Max Gotthardt(), Marco Morik(), Moritz Schäfer (350651)}{Tutor: }
+
+\begin{document}
+\maketitle
+
+\subsection{Aufgabe 1}
+\begin{description}
+  \item[a)]
+    Die Aussage ist falsch. Ein Beispiel:
+    \begin{align}
+      \Sigma = \{a\} A = \{a\} \\
+      (\overline{A})^* &=  \Sigma^* \setminus \{a\} \\
+      \overline{A^*} &= \Sigma^* \setminus A^* = \emptyset \\
+    \end{align}
+  \item[b)] 
+    Die Aussage ist falsch. Beispiel:
+    \begin{align}
+      A = \{a\} B = \{b\} \\
+      A^* \cup B^* &= \{a,aa,aaa,\dots,b,bb,bbb,\dots\} \\
+      (A \cup B)^* &= \{a,b,ab,ba,aba,bab,\dots\} \\
+    \end{align}
+  \item[c)]
+    Die Aussage ist falsch. Beispiel:
+    \begin{align}
+      A = \{a,b\} B = \{ab\} \\
+      A \cap B &= \emptyset \\
+      A^* \cap B^* &= \{ab, abab, ababab, \dots\} \\
+    \end{align}
+\end{description}
+
+\end{document}
+
