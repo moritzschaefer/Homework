@@ -1,13 +1,11 @@
 \documentclass[a4paper]{scrartcl}
 % Source: http://www.howtotex.com/templates/two-column-journal-article-template/
 
-% Source: http://www.howtotex.com/templates/two-column-journal-article-template/
-
 % SETTINGS BEGIN
 
-\usepackage{assignment}
-\usepackage[hmarginratio=1:1,top=25mm,left=25mm]{geometry}
+\usepackage{assignment} \usepackage[hmarginratio=1:1,top=25mm,left=25mm]{geometry}
 \usepackage{arydshln}
+\usepackage{qtree}
 
 
 \usepackage{wasysym}
@@ -37,27 +35,63 @@
 \subsection{Aufgabe 1}
 \begin{description}
   \item[a)]
-    Die Aussage ist falsch. Ein Beispiel:
-    \begin{align}
-      \Sigma = \{a\} A = \{a\} \\
+    Die Aussage ist falsch. Beispiel:
+    \begin{align*}
+      \Sigma = \{a\}; \  A = \{a\} \\
       (\overline{A})^* &=  \Sigma^* \setminus \{a\} \\
       \overline{A^*} &= \Sigma^* \setminus A^* = \emptyset \\
-    \end{align}
+    \end{align*}
   \item[b)] 
     Die Aussage ist falsch. Beispiel:
-    \begin{align}
-      A = \{a\} B = \{b\} \\
+    \begin{align*}
+      A = \{a\} ; \  B = \{b\} \\
       A^* \cup B^* &= \{a,aa,aaa,\dots,b,bb,bbb,\dots\} \\
       (A \cup B)^* &= \{a,b,ab,ba,aba,bab,\dots\} \\
-    \end{align}
+    \end{align*}
   \item[c)]
     Die Aussage ist falsch. Beispiel:
-    \begin{align}
-      A = \{a,b\} B = \{ab\} \\
+    \begin{align*}
+      A = \{a,b\} ; \  B = \{ab\} \\
       A \cap B &= \emptyset \\
       A^* \cap B^* &= \{ab, abab, ababab, \dots\} \\
-    \end{align}
+    \end{align*}
 \end{description}
+\subsection{Aufgabe 2} % (fold)
+\label{ssub:Aufgabe 2}
+\begin{description}
+  \item[a)] 
+    \begin{itemize}
+      \item $ S \rightarrow aS \rightarrow aaS \rightarrow aaTb \rightarrow aabb $
+      \item $ S \rightarrow aS \rightarrow aaS \rightarrow aaTb \rightarrow aaTbb \rightarrow aabb $
+      \item $ S \rightarrow aS \rightarrow aTb \rightarrow aabb $
+    \end{itemize}
+  \item[b)] 
+    \begin{itemize}
+      \item \Tree [.S a [.S a [.S [.T b ] b ] ] ]
+      \item \Tree [.S a [.S a [.S [.T  [.T  epsilon ] b ] b ] ] ]
+      \item \Tree [.S a [.S [.T a b ] b ] ]
+    \end{itemize}
+\end{description}
+% subsection Aufgabe 2 (end)
+\subsection{Aufgabe 3} % (fold)
+\label{sub:Aufgabe 3}
+\begin{description}
+  \item[1.] $ \emptyset^* = \{\epsilon\} \{\epsilon\}^* = \{\epsilon\} $
+  \item[2.] $  A ^ * = \bigcup _ { n \geq 0 }  A^n $\\
+    Nach 1. ist $\emptyset^*$ und $j\{\epsilon\}^*$ nicht unendlich. Enthält A hingegen ein Element, gibt es unendlich verscheidene Kombinationen dieses Elementes $n\geq0$ enthält $\infty$ viele $n$.
+\end{description}
+
+% subsection Aufgabe 3 (end)
+\subsection{Aufgabe 4} % (fold)
+\label{sub:Aufgabe 4}
+$ G =  \{\{S,M,K\},\{a,b,c\}, P, S\} $ \\
+\begin{tabbing}
+
+$ P = \{ $\=$ S \rightarrow aKbbMc, $\\
+         \=$ K \rightarrow aKb | \epsilon | Kb, $\\
+         \=$ M \rightarrow bMc | \epsilon | bM \} $
+\end{tabbing}
+% subsection Aufgabe 4 (end)
 
 \end{document}
 
