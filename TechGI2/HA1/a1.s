@@ -1,5 +1,5 @@
 # c is in a0, n is in a1
-doFo:
+main:
 add $t0, $zero, $zero # i=0
 for:
 bge $t0, $a1, endfor # i<n?
@@ -10,10 +10,10 @@ bne $t2, $a1, endif #if c[i] == n
 addi $a1, $a1, 1
 sw $a1, 0($t1)
 addi $v0, $zero, 1
-return $ra
+jr $ra
 endif:
 addi $t0, $t0, 1 # i++
 j for
 endfor:
 add $v0, $zero, $zero # return 0
-return $ra
+jr $ra
