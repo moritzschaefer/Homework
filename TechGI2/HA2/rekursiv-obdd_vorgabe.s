@@ -46,25 +46,28 @@ evaluate:
 
 obdd_to_boolean:
 
-  addi $sp, $sp, -12 # save save-registers
+  addi $sp, $sp, -16 # save save-registers
   sw $s0, 0($sp) 
   sw $s1, 4($sp)
   sw $s2, 8($sp)
+  sw $ra, 12($sp)
+
+
 
   add $s0, $a0, $zero #save head in s0
   add $s1, $a1, $zero #save buffer in s1
   add $s2, $a2, $zero #save i in s2
 
   lw $t0, 0($a0)
-  bne $t0, $zero, if10
+  bne $t0, $zero, if10 # if head->name ==0
   j return_obdd
   if10:
-  addi $t1, $t0, -1
-  bne $t1, $zero, if11
+  addi $t0, $t0, -1
+  bne $t0, $zero, if11
   add $t1, $s2, 1  
   sll $t1, $t1, 2
   add $t1, $t1, $s1
-  sw $zero, 0($t1) # buffer[i+1] = 0
+  sw $zero, 0($t1) #  buffer[i+1] = 0
   add $a0, $s1, $zero
   jal printbool
   j return_obdd
@@ -101,8 +104,9 @@ obdd_to_boolean:
   lw $s0, 0($sp) 
   lw $s1, 4($sp)
   lw $s2, 8($sp)
+  lw $ra, 12($sp)
 
-  addi $sp, $sp, 12 # save save-registers
+  addi $sp, $sp, 16 # save save-registers
 
   jr  $ra                     #
 
