@@ -2,9 +2,43 @@ evaluate:
 #
 #insert your code here 
 #
+  # read head->right
+  lw $t0, 4($a0)
+  beq $t0, $zero, endevaluate
 
+  add $t0, $zero, $zero #init i = 0
+  innerwhile:
+  add $t1, $zero, $t0
+  sll $t1, $t1, 2
+  add $t1, $t1, $a1
+  lw $t1, 0($t1) # belegung[i]
+  lw $t2, 0($a0) # head->name
+  beq $t1, $t2, endinnerwhile # belegung[i] != head->name ?
+  bne $t1, $zero, if0 # belegung[i] == 0?
+  add $v0, $zero, $zero
+  jr $ra # return 0
+  if0:
+  addi $t0, $t0, 2 # i += 2
 
-    jr  $ra                     
+  j innerwhile
+  endinnerwhile:
+  addi $t0, $t0, 1 # i++
+
+  bne $t1, $zero, if1 # belegung[i] == 0
+  lw $t2, 8($a0)
+  add $a0, $t2, $zero  #  head = head->left
+
+  j endif1
+  if1: # else
+  lw $t2, 4($a0)
+  add $a0, $t2, $zero # head = head->right
+
+  endif1:
+
+  j evaluate
+  endevaluate:
+  lw $v0, 0($a0)
+  jr  $ra                     
 
 obdd_to_boolean:
 #
