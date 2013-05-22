@@ -42,13 +42,13 @@ swap:
 # j*n+i
 
 
-mul $t1, $a2, $a1  # here begins swap
-add $t1, $t1, $a3
+mul $t1, $a2, $a1  # here begins swap#calculate  posision in array of i,j-value
+add $t1, $t1, $a3 
 sll $t1, $t1, 2
 add $t1, $t1, $a0
 lw $t2, 0($t1) # save i,j-value
 
-mul $t0, $a3, $a1
+mul $t0, $a3, $a1 #calculate position of j,i value in array
 add $t0, $t0, $a2
 sll $t0, $t0, 2 
 add $t0, $t0, $a0 
@@ -56,7 +56,7 @@ lw $t3, 0($t0) # save j,i-value
 sw $t2, 0($t0) # store i,j at j,i
 sw $t3, 0($t1) # store j,i at i,j
 
-jr $ra
+jr $ra #return tu caller
 
 
 
@@ -65,9 +65,9 @@ jr $ra
 #   $a1 = max row-count equals n
 #   Returns pointer to array via $v0
 ##################################
-transpose: 
-#save return adress
-addi $sp, $sp, -32
+transpose: #transpose begin
+#save return adress and used save registers
+addi $sp, $sp, -32 
 sw $ra, 0($sp)
 sw $s0, -4($sp)
 sw $s1, -8($sp)
@@ -77,7 +77,7 @@ sw $s4, -20($sp)
 sw $s5, -24($sp)
 sw $s6, -28($sp)
 
-add $s5, $a0, $zero #transpose begin
+add $s5, $a0, $zero #save parameters array_pointer and n
 add $s6, $a1 $zero
 addi $s0, $a1, 0 # counter1 = n
 outerfor:
@@ -85,21 +85,21 @@ beq $s0, $zero, endouterfor # while count1 != 0
 addi $s0, $s0, -1 # counter1--
 addi $s1, $a1, -1 #counter2 = n-1
 innerfor:
-ble $s1, $s0, endinnerfor  # while count2 > count1
-add $a0, $s5, $zero # init parameters for swap
-add $a1, $s6, $zero
-add $a2, $s0, $zero
-add $a3, $s1, $zero
+ble $s1, $s0, endinnerfor  # while counter2 > counter1
+add $a0, $s5, $zero # init parameters for swap #arraypointer
+add $a1, $s6, $zero # n
+add $a2, $s0, $zero # i
+add $a3, $s1, $zero # 
 jal swap # call swap
 
 addi $s1, $s1, -1 #count2 -=1
-j innerfor
+j innerfor #return to inner loop
 endinnerfor:
-j outerfor
+j outerfor #return to outer loop
 endouterfor:
-add $v0, $s5, $zero
+add $v0, $s5, $zero #init return value (array pointer)
 
-lw $ra, 0($sp)
+lw $ra, 0($sp) #restore return address and save registers
 lw $s0, -4($sp)
 lw $s1, -8($sp)
 lw $s2, -12($sp)
@@ -109,7 +109,7 @@ lw $s5, -24($sp)
 lw $s6, -28($sp)
 addi $sp, $sp, 32
 
-jr $ra
+jr $ra #return to caller
 
 #####################################
 #                                   #
