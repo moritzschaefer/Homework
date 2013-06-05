@@ -58,6 +58,9 @@ obdd_to_boolean:
   add $s1, $a1, $zero #save buffer in s1
   add $s2, $a2, $zero #save i in s2
 
+
+# Moritz hat mich von Github überzeugt, da ich nichts installieren musste
+
   lw $t0, 0($a0)
   bne $t0, $zero, if10 # if head->name ==0
   j return_obdd
