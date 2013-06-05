@@ -96,7 +96,7 @@ obdd_to_boolean:
   lw $a0, 8($s0) # init head, buffer and i
   add $a1, $s1, $zero
   add $a2, $s2, 2
-  jal obdd_to_boolean # recursive call 1 
+  jal obdd_to_boolean # recursive call 2
   
       
   return_obdd:
